@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaders HWID - System Identifier Management Tool</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#1e293b', // Slate 800
+                        'secondary-dark': '#334155', // Slate 700
+                        'accent': '#34d399', // Emerald 400
+                        'text-light': '#f1f5f9', // Slate 100
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for features -->
+    <script type="module">
+        import { createIcons, Monitor, HardHat, BarChart2, Zap, Settings, BookOpen } from 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/esm/lucide.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            createIcons({
+                icons: { Monitor, HardHat, BarChart2, Zap, Settings, BookOpen }
+            });
+        });
+    </script>
+    <style>
+        /* Apply Inter font globally and set dark mode base */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #f1f5f9; /* Slate 100 */
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(52, 211, 153, 0.2), 0 4px 6px -4px rgba(52, 211, 153, 0.2);
+            border-color: #34d399;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-primary-dark shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-accent">
+                Evaders <span class="text-text-light">HWID</span>
+            </div>
+            <nav>
+                <a href="#features" class="text-text-light hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition duration-150">Features</a>
+                <a href="#install" class="text-text-light hover:text-accent px-3 py-2 rounded-md text-sm font-medium transition duration-150">Get Started</a>
+                <a href="https://github.com/jlaiii/Evaders-HWID" target="_blank" class="bg-accent text-primary-dark px-3 py-2 ml-4 rounded-lg text-sm font-semibold hover:bg-emerald-300 transition duration-150">
+                    GitHub Repo
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-24">
+            <h1 class="text-5xl sm:text-7xl font-extrabold mb-4 leading-tight">
+                Advanced <span class="text-accent">HWID</span> Management
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-300 max-w-3xl mx-auto mb-8">
+                A command-line utility for comprehensive Hardware Identifier (HWID) collection, comparison, and background monitoring.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="https://github.com/jlaiii/Evaders-HWID/releases" target="_blank" class="bg-accent text-primary-dark font-bold py-3 px-8 rounded-xl text-lg shadow-xl hover:bg-emerald-300 transition duration-300">
+                    Download Latest Release
+                </a>
+                <a href="#install" class="border border-slate-600 text-text-light font-bold py-3 px-8 rounded-xl text-lg hover:bg-secondary-dark transition duration-300">
+                    View Documentation
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="bg-primary-dark py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-4">Key Features</h2>
+                <p class="text-xl text-slate-400 text-center max-w-2xl mx-auto mb-16">
+                    Designed for robustness and real-time system introspection.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Feature Card 1: HWID Collection -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <Monitor class="w-10 h-10 text-accent mb-4"></Monitor>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">System HWID Collection</h3>
+                        <p class="text-slate-400">
+                            Accurately collects and stores hardware identifiers (HWIDs) for system components, providing a detailed baseline.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 2: Comparison -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <HardHat class="w-10 h-10 text-accent mb-4"></HardHat>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">Real-time Comparison</h3>
+                        <p class="text-slate-400">
+                            Compares the current HWID signature against saved baselines to detect and track system changes.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 3: Statistics -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <BarChart2 class="w-10 h-10 text-accent mb-4"></BarChart2>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">Comprehensive Statistics</h3>
+                        <p class="text-slate-400">
+                            View detailed statistics on HWID changes, collection timestamps, and system monitoring history.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 4: Anti-Cheat Simulation (NEW) -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <Zap class="w-10 h-10 text-accent mb-4"></Zap>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">Anti-Cheat Simulation</h3>
+                        <p class="text-slate-400">
+                            Simulates anti-cheat system monitoring to test system resilience and detect potential HWID tracking or validation issues.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 5: Settings -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <Settings class="w-10 h-10 text-accent mb-4"></Settings>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">Configurable Settings</h3>
+                        <p class="text-slate-400">
+                            Manage application settings, including monitoring intervals, startup behavior, and data file locations.
+                        </p>
+                    </div>
+
+                    <!-- Feature Card 6: Logging -->
+                    <div class="feature-card p-6 bg-secondary-dark rounded-xl border border-slate-700">
+                        <BookOpen class="w-10 h-10 text-accent mb-4"></BookOpen>
+                        <h3 class="text-xl font-semibold mb-2 text-text-light">Detailed Event Logging</h3>
+                        <p class="text-slate-400">
+                            Every action, change, and system check is logged for complete auditability and troubleshooting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="install" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <h2 class="text-4xl font-bold text-center mb-10">Getting Started</h2>
+            <p class="text-lg text-slate-300 text-center max-w-3xl mx-auto mb-12">
+                Evaders HWID is a Python utility. Follow these steps to set up and run the tool.
+            </p>
+
+            <div class="bg-primary-dark p-6 sm:p-8 rounded-xl shadow-2xl border border-slate-700">
+                <h3 class="text-2xl font-semibold mb-4 text-accent">1. Prerequisites</h3>
+                <p class="text-slate-300 mb-6">Ensure you have Python 3 installed on your system.</p>
+                
+                <h3 class="text-2xl font-semibold mb-4 text-accent">2. Download & Setup</h3>
+                <p class="text-slate-300 mb-2">Clone the repository or download the source code:</p>
+                <div class="bg-secondary-dark p-4 rounded-lg overflow-x-auto text-sm mb-6">
+                    <pre class="whitespace-pre-wrap"><code class="text-emerald-300">git clone https://github.com/jlaiii/Evaders-HWID.git</code></pre>
+                    <pre class="whitespace-pre-wrap"><code class="text-emerald-300">cd Evaders-HWID</code></pre>
+                </div>
+                
+                <h3 class="text-2xl font-semibold mb-4 text-accent">3. Install Dependencies</h3>
+                <p class="text-slate-300 mb-2">The tool requires `psutil`. Install it using pip:</p>
+                <div class="bg-secondary-dark p-4 rounded-lg overflow-x-auto text-sm mb-6">
+                    <pre class="whitespace-pre-wrap"><code class="text-emerald-300">pip install -r requirements.txt</code></pre>
+                    <p class="text-slate-400 mt-2">*(Note: The tool attempts to auto-install dependencies if run directly.)*</p>
+                </div>
+                
+                <h3 class="text-2xl font-semibold mb-4 text-accent">4. Run the Tool</h3>
+                <p class="text-slate-300 mb-2">Execute the main script from your terminal:</p>
+                <div class="bg-secondary-dark p-4 rounded-lg overflow-x-auto text-sm">
+                    <pre class="whitespace-pre-wrap"><code class="text-emerald-300">python evaders_hwid.py</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark mt-20 py-8 border-t border-slate-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400 text-sm">
+            <p>&copy; 2025 Evaders HWID Project. All rights reserved.</p>
+            <p class="mt-2">Developed with Python & maintained on <a href="https://github.com/jlaiii/Evaders-HWID" target="_blank" class="text-accent hover:underline">GitHub</a>.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
